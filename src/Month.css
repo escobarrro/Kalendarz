@@ -1,0 +1,101 @@
+.month {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.days-of-week {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.day-of-week {
+  text-align: center;
+  flex: 1;
+}
+
+.weekend {
+  color: red;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  text-align: center;
+}
+
+.day {
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 27px;
+  width: 27px;
+}
+
+.empty-day {
+  height: 30px;
+}
+
+.gray {
+  color: #aaa;
+}
+
+.red {
+  color: red;
+  font-weight: bold;
+}
+
+.holiday-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 95%;
+  height: 95%;
+  border-radius: 50%;
+  background-color: red;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.holiday {
+  position: relative;
+}
+
+.holiday:hover .hovered-day {
+  display: block;
+}
+
+.hovered-day {
+  display: none;
+  position: absolute;
+  bottom: 65px;
+  width: 200px;
+  height: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.triangle-down {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+}
+
+
+
