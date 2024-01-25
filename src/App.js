@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import Holidays from 'date-holidays';
 import CalendarHeader from "./CalendarHeader";
 import Month from './Month';
+import TodayInfo from './TodayInfo';
 import './App.css';
 
 const Calendar = ({ year }) => {
   const days = [];
   const [selectedYear, setSelectedYear] = useState(year);
   const [holidays, setHolidays] = useState([]);
+  const [today, setToday] = useState(new Date());
   const months = [
     "Styczeń",
     "Luty",
@@ -22,6 +24,8 @@ const Calendar = ({ year }) => {
     "Listopad",
     "Grudzień",
   ];
+
+  
 
   useEffect(() => {
     const hd = new Holidays('PL');
@@ -66,7 +70,7 @@ const Calendar = ({ year }) => {
       });
     }
   
-    const remainingDays = 35 - (numDays + startDay);
+    const remainingDays = Math.ceil((numDays + startDay) / 7) * 7 - (numDays + startDay);
     let nextMonthDate = 1;
   
     for (let i = 1; i <= remainingDays; i++) {
@@ -94,6 +98,7 @@ const Calendar = ({ year }) => {
     <Month
       key={month}
       monthName={month}
+      monthIndex={index}
       monthDays={getMonthDays(selectedYear, index)}
       holidaysData={holidays}
       selectedYear={selectedYear}
@@ -102,13 +107,18 @@ const Calendar = ({ year }) => {
 
   return (
     <div className="calendar-container">
+      <div className="calendar-small-container">
       <CalendarHeader
         selectedYear={selectedYear}
         onPrevYear={handlePrevYear}
         onNextYear={handleNextYear}
       />
-      <div className="calendar">{calendar}</div>
-    </div>
+      <div className="calendar">
+      {calendar}
+      </div>
+      </div>
+      <TodayInfo today={today} className="today-info"/>
+      </div>
   );
 };
 
