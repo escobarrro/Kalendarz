@@ -24,6 +24,9 @@ const Calendar = ({ year }) => {
     "Listopad",
     "Grudzień",
   ];
+  const holidays2 = [
+    { date: "01.Styczeń", name: "Święto 1" },
+  ];
 
   
 
@@ -102,6 +105,7 @@ const Calendar = ({ year }) => {
       monthDays={getMonthDays(selectedYear, index)}
       holidaysData={holidays}
       selectedYear={selectedYear}
+      holidays={holidays2}
     />
   ));
 
